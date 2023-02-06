@@ -1,20 +1,21 @@
 import { useLocation, Link } from 'react-router-dom';
 import { UserBlock } from '../UserBlock/UserBlock';
 import { AppRoute } from '../../../Consts';
+import style from './Header.module.scss';
 
 const Header = (): JSX.Element => {
     const { pathname } = useLocation();
     const isPageMain = pathname === '/' && true;
 
     return (
-        <header className="header">
+        <header className={style.header}>
             <div className="container">
-                <div className={`header_container ${isPageMain
-                    ? 'header_container--main'
+                <div className={`${style.header_container} ${isPageMain
+                    ? style['header_container--main']
                     : ''} `}>
                     {isPageMain
-                        ? <span className="header_title">Nîmes</span>
-                        : <Link className="header_title" to={AppRoute.Root}>Nîmes</Link>}
+                        ? <span className={style.header_title}>Nîmes</span>
+                        : <Link className={style.header_title} to={AppRoute.Root}>Nîmes</Link>}
                     {!isPageMain && <UserBlock />}
                 </div>
             </div>

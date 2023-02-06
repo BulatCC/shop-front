@@ -1,12 +1,15 @@
-const ButtonsChoose = (): JSX.Element => {
+import { ButtonsChooseProps } from './ButtonsChoose.type';
+import style from './ButtonsChoose.module.scss';
+
+const ButtonsChoose = ({ classMod }: ButtonsChooseProps): JSX.Element => {
     return (
-        <nav className="buttons-choose">
-            <ul className="buttons-choose_list scrollable">
-                <li className="buttons-choose_item">
-                    <a className="buttons-choose_link active" href="#">Woman</a>
+        <nav className={`${classMod ?? ''}`}>
+            <ul className={style['buttons-choose_list']}>
+                <li className={style['buttons-choose_item']}>
+                    <a className={`${style['buttons-choose_link']} ${style['active']} `} href="#">Woman</a>
                 </li>
-                <li className="buttons-choose_item">
-                    <a className="buttons-choose_link" href="#">Man</a>
+                <li className={style['buttons-choose_item']}>
+                    <a className={style['buttons-choose_link']} href="#">Man</a>
                 </li>
             </ul>
         </nav>

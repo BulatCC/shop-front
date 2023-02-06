@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
-import { Login } from './pages/Login';
-import { Main } from './pages/Main';
-import { Catalog } from './pages/Catalog';
-import { Product } from './pages/Product';
-import { Cart } from './pages/Cart';
+import { Login } from './pages/Login/Login';
+import { Main } from './pages/Main/Main';
+import { Catalog } from './pages/Catalog/Catalog';
+import { Product } from './pages/Product/Product';
+import { Cart } from './pages/Cart/Cart';
 import { Layout } from './components/Layout';
 import { AppRoute } from './Consts';
 import { useScrollTop } from './hooks/UseScrollTop';

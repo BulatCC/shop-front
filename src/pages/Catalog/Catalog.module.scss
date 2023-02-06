@@ -1,0 +1,39 @@
+@import '../../styles/mixins.scss';
+
+.catalog {
+    .catalog_container {
+        margin-bottom: 2rem;
+    
+        @include vp-768 {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.catalog_bread-crumbs {
+    margin-bottom: 3rem;
+}
+
+.catalog_product-list {
+    @include vp-768 {
+        grid-template-columns: 1fr 1fr 1fr;
+
+        .product-card_img-wrap {
+            height: 36.33vw;
+        }
+    }
+
+    @include vp-1200 {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 6.6rem;
+
+        .product-card_img-wrap {
+            height: 27rem;
+        }
+    }
+}
+
+.catalog_filter-container,
+.catalog_sort-buttons {
+    margin-bottom: 3rem;
+}

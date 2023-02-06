@@ -22,6 +22,7 @@ module.exports = {
     "@typescript-eslint/semi": [2, "always"],
     "@typescript-eslint/indent": ["error", 4],
     "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/dot-notation": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
     "@typescript-eslint/consistent-type-assertions": "off",
     "@typescript-eslint/member-delimiter-style": ["error", {

@@ -1,21 +1,26 @@
 import { BreadCrumbs } from '../../Common/BreadCrumbs/BreadCrumbs';
 import { Img } from '../../Common/Img/Img';
+import style from './HeadBlock.module.scss';
 
-import { mockCrumbsData } from '../../../api/mocks';
+import { mockCrumbsData } from '../../../services/mocks';
+
+const screenWidth = document.documentElement.clientWidth;
 
 const HeadBlock = (): JSX.Element => {
     return (
-        <div className="head-block hidden-mobile mb-3">
-            <div className="container head-block_container">
-                <div className="head-block_wrap">
-                    <BreadCrumbs crumsbData={mockCrumbsData} />
-                    <h2 className="head-block_title">Denim Collection <br /> Fall 2023</h2>
+        <>
+            {screenWidth > 767 && <div className={style['head-block']}>
+                <div className={`${style['head-block_container']} container`}>
+                    <div className={style['head-block_wrap']}>
+                        <BreadCrumbs crumsbData={mockCrumbsData} classMod={style['head-block_bread-crumbs']}/>
+                        <h2 className={style['head-block_title']}>Denim Collection <br /> Fall 2023</h2>
+                    </div>
+                    <div className={style['head-block_picture-wrap']}>
+                        <Img imgPath='/img/head-block' className={style['head-block_img']} width="294" height="260" />
+                    </div>
                 </div>
-                <div className="head-block_picture-wrap">
-                    <Img imgPath='head-block' className='head-block_img' width="294" height="260" />
-                </div>
-            </div>
-        </div>
+            </div>}
+        </>
     );
 };
 

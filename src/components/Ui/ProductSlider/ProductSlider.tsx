@@ -1,17 +1,18 @@
 import { useRef, useEffect } from 'react';
 import { Navigation, Thumbs, Swiper } from 'swiper';
 import { Img } from '../../Common/Img/Img';
+import './ProductSlider.scss';
+
+const screenWidth = document.documentElement.clientWidth;
 
 const ProductSlider = (): JSX.Element => {
-    const sliderRef = useRef<any>(null);
-    const sliderPaginationRef = useRef<any>(null);
+    const sliderRef = useRef<HTMLDivElement>(null);
+    const sliderPaginationRef = useRef<HTMLDivElement>(null);
     const prevButtonRef = useRef<HTMLButtonElement | null>(null);
     const nextButtonRef = useRef<HTMLButtonElement | null>(null);
 
-    const screenWidth = document.documentElement.clientWidth;
-
     useEffect(() => {
-        const productSliderPagination = new Swiper(sliderPaginationRef.current, {
+        const productSliderPagination = new Swiper(sliderPaginationRef.current as HTMLDivElement, {
             breakpoints: {
                 768: {
                     slidesPerView: 3,
@@ -24,7 +25,7 @@ const ProductSlider = (): JSX.Element => {
             }
         });
         // eslint-disable-next-line
-        new Swiper(sliderRef.current, {
+        new Swiper(sliderRef.current as HTMLDivElement, {
             modules: [Navigation, Thumbs],
             navigation: {
                 nextEl: nextButtonRef.current,
@@ -55,19 +56,19 @@ const ProductSlider = (): JSX.Element => {
             <div className="product-slider" ref={sliderRef}>
                 <div className="swiper-wrapper">
                     <div className="swiper-slide">
-                        <Img imgPath='slider-1' altText='Jacket' className='product-slider_img' width="244" height="310" />
+                        <Img imgPath='/img/slider-1' altText='Jacket' className='product-slider_img' width="244" height="310" />
                     </div>
                     <div className="swiper-slide">
-                        <Img imgPath='slider-2' altText='Jacket' className='product-slider_img' width="244" height="310" />
+                        <Img imgPath='/img/slider-2' altText='Jacket' className='product-slider_img' width="244" height="310" />
                     </div>
                     <div className="swiper-slide">
-                        <Img imgPath='slider-3' altText='Jacket' className='product-slider_img' width="244" height="310" />
+                        <Img imgPath='/img/slider-3' altText='Jacket' className='product-slider_img' width="244" height="310" />
                     </div>
                     <div className="swiper-slide">
-                        <Img imgPath='slider-4' altText='Jacket' className='product-slider_img' width="244" height="310" />
+                        <Img imgPath='/img/slider-4' altText='Jacket' className='product-slider_img' width="244" height="310" />
                     </div>
                     <div className="swiper-slide">
-                        <Img imgPath='slider-5' altText='Jacket' className='product-slider_img' width="244" height="310" />
+                        <Img imgPath='/img/slider-5' altText='Jacket' className='product-slider_img' width="244" height="310" />
                     </div>
                 </div>
                 <button className="product-slider_button product-slider_button--prev" type="button" ref={prevButtonRef}>
@@ -81,19 +82,19 @@ const ProductSlider = (): JSX.Element => {
                 <div className="product-slider_pagination" ref={sliderPaginationRef}>
                     <div className="swiper-wrapper">
                         <div className="swiper-slide">
-                            <Img imgPath='slider-1' altText='Jacket' className='product-slider_img' width="100" height="200" />
+                            <Img imgPath='/img/slider-1' altText='Jacket' className='product-slider_img' width="100" height="200" />
                         </div>
                         <div className="swiper-slide">
-                            <Img imgPath='slider-2' altText='Jacket' className='product-slider_img' width="100" height="200" />
+                            <Img imgPath='/img/slider-2' altText='Jacket' className='product-slider_img' width="100" height="200" />
                         </div>
                         <div className="swiper-slide">
-                            <Img imgPath='slider-3' altText='Jacket' className='product-slider_img' width="100" height="200" />
+                            <Img imgPath='/img/slider-3' altText='Jacket' className='product-slider_img' width="100" height="200" />
                         </div>
                         <div className="swiper-slide">
-                            <Img imgPath='slider-4' altText='Jacket' className='product-slider_img' width="100" height="200" />
+                            <Img imgPath='/img/slider-4' altText='Jacket' className='product-slider_img' width="100" height="200" />
                         </div>
                         <div className="swiper-slide">
-                            <Img imgPath='slider-5' altText='Jacket' className='product-slider_img' width="100" height="200" />
+                            <Img imgPath='/img/slider-5' altText='Jacket' className='product-slider_img' width="100" height="200" />
                         </div>
                     </div>
                 </div>
