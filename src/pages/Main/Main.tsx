@@ -17,12 +17,12 @@ const Main = (): JSX.Element => {
     return (
         <>
             <Accent />
-            <ProductsPreviewList title='Bestsellers' link={'#'} products={data?.bestSellers} anchor='scroll-down' />
-            <ProductsPreviewList title='Jeans' link={'#'} products={data?.jeans} />
-            <ProductsPreviewList title='Overalls' link={'#'} products={data?.overalls} />
+            <ProductsPreviewList title='Bestsellers' link={AppRoute.Catalog} products={data?.bestSellers} anchor='scroll-down' />
+            <ProductsPreviewList title='Jeans' link={AppRoute.Catalog} products={data?.jeans} />
+            <ProductsPreviewList title='Overalls' link={AppRoute.Catalog} products={data?.overalls} />
             <Banner link={AppRoute.Catalog} imgPath='/img/banner' title='Fall 2023' text='Street fashion collection' />
-            <ProductsPreviewList title='Jackets' link={'#'} products={data?.jackets} />
-            <ProductsPreviewList title='Shirts' link={'#'} products={data?.shirts} />
+            <ProductsPreviewList title='Jackets' link={AppRoute.Catalog} products={data?.jackets} />
+            <ProductsPreviewList title='Shirts' link={AppRoute.Catalog} products={data?.shirts} />
         </>
     );
 };

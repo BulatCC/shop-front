@@ -1,21 +1,17 @@
-import { RadioButton as SortButtonsProps } from '../../../types/Radio';
+import { ChooseButtons as SortButtonsProps } from '../../../types/ButtomChoice';
 import style from './SortButtons.module.scss';
 
-const SortButtons = ({ data, name, onChange, checked, classMod }: SortButtonsProps): JSX.Element => {
+const SortButtons = ({ data, name, onChange, selected, classMod }: SortButtonsProps): JSX.Element => {
     return (
         <ul className={`${style['sort-buttons']} ${classMod ?? ''}`}>
-            {data.map(({ id, value }, i) => (
-                <li key={value + i.toString()}>
-                    <input
-                        className={style['sort-buttons_button']}
-                        type="radio"
+            {data.map(({ id, value }) => (
+                <li key={id}>
+                    <button className={`${style['sort-buttons_button']} ${value === selected ? style.active : ''}`}
+                        type="button"
                         name={name}
-                        id={id}
                         value={value}
-                        checked={value === checked}
-                        onChange={onChange}
-                    />
-                    <label htmlFor={id}>{value}</label>
+                        onClick={onChange}
+                    >{value}</button>
                 </li>
             ))}
         </ul>

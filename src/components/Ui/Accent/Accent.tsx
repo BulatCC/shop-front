@@ -11,12 +11,12 @@ const Accent = (): JSX.Element => {
         {
             id: '1',
             title: 'Woman',
-            link: '#'
+            link: AppRoute.Catalog
         },
         {
             id: '2',
             title: 'Man',
-            link: '#'
+            link: AppRoute.Catalog
         }
     ];
 

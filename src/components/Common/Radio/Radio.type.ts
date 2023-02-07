@@ -1,6 +1,6 @@
 import { ChangeEvent } from 'react';
 
-export interface RadioButton {
+export interface RadioProps {
     data: Array<{
         id: string;
         value: string;

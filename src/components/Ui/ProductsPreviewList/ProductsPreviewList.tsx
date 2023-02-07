@@ -1,5 +1,6 @@
 import { ProductsPreviewListProps } from './ProductsPreviewList.type';
 import { ProductList } from '../ProductList/ProductList';
+import { Link } from 'react-router-dom';
 
 const ProductsPreviewList = ({ title, link, products, anchor }: ProductsPreviewListProps): JSX.Element => {
     const screenWidth = document.documentElement.clientWidth;
@@ -12,7 +13,7 @@ const ProductsPreviewList = ({ title, link, products, anchor }: ProductsPreviewL
                 </div>
                 <ProductList products={products} skeletonNumber={4} />
                 {screenWidth < 768 && <div className=" link-container">
-                    <a className="link" href={link}>View all</a>
+                    <Link className='link' to={link}>View all</Link>
                 </div>}
             </div>
         </section>

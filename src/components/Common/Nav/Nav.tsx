@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { NavProps } from './Nav.type';
 import style from './Nav.module.scss';
 
@@ -5,7 +6,7 @@ const Nav = ({ data, classMod }: NavProps): JSX.Element => {
     return (
         <nav className={`${style.nav} ${classMod ?? ''}`}>
             {data.map(({ id, title, link }) => (
-                <a className={style.nav_link} href={link} key={id}>{title}</a>
+                <Link className={style.nav_link} to={link} key={id}>{title}</Link>
             ))}
         </nav>
     );

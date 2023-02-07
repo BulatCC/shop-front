@@ -1,8 +1,49 @@
-import { useState, ChangeEvent } from 'react';
+import { useState, ChangeEvent, MouseEvent } from 'react';
 import { SortButtons } from '../../Common/SortButtons/SortButtons';
 import { Radio } from '../../Common/Radio/Radio';
 import { ProductDetailsProps } from './ProductDetails.type';
 import style from './ProductDetails.module.scss';
+
+const radioData = [
+    {
+        id: '#B0C3C7',
+        value: '#B0C3C7',
+        color: '#B0C3C7'
+    },
+    {
+        id: '#3B6392',
+        value: '#3B6392',
+        color: '#3B6392'
+    },
+    {
+        id: '#2D2E2E',
+        value: '#2D2E2E',
+        color: '#2D2E2E'
+    }
+];
+
+const sortData = [
+    {
+        id: '1',
+        value: 'XS'
+    },
+    {
+        id: '2',
+        value: 'S'
+    },
+    {
+        id: '3',
+        value: 'M'
+    },
+    {
+        id: '4',
+        value: 'L'
+    },
+    {
+        id: '5',
+        value: 'XL'
+    }
+];
 
 const ProductDetails = ({ title, description, subTitle }: ProductDetailsProps): JSX.Element => {
     const [productData, setProductData] = useState({
@@ -10,54 +51,13 @@ const ProductDetails = ({ title, description, subTitle }: ProductDetailsProps): 
         size: 'XS'
     });
 
-    const handleChange = (evt: ChangeEvent<HTMLInputElement>): void => {
-        const { value, name } = evt.target;
+    const handleChange = (evt: ChangeEvent<HTMLInputElement> | MouseEvent<HTMLButtonElement>): void => {
+        const { value, name } = evt.target as HTMLButtonElement;
         setProductData({
             ...productData,
             [name]: value
         });
     };
-
-    const radioData = [
-        {
-            id: '#B0C3C7',
-            value: '#B0C3C7',
-            color: '#B0C3C7'
-        },
-        {
-            id: '#3B6392',
-            value: '#3B6392',
-            color: '#3B6392'
-        },
-        {
-            id: '#2D2E2E',
-            value: '#2D2E2E',
-            color: '#2D2E2E'
-        }
-    ];
-
-    const sortData = [
-        {
-            id: '1',
-            value: 'XS'
-        },
-        {
-            id: '2',
-            value: 'S'
-        },
-        {
-            id: '3',
-            value: 'M'
-        },
-        {
-            id: '4',
-            value: 'L'
-        },
-        {
-            id: '5',
-            value: 'XL'
-        }
-    ];
 
     return (
         <div className={style['product-details_description']}>
@@ -83,7 +83,7 @@ const ProductDetails = ({ title, description, subTitle }: ProductDetailsProps): 
                             data={sortData}
                             name='size'
                             onChange={handleChange}
-                            checked={productData.size}
+                            selected={productData.size}
                         />
                     </li>
                 </ul>
