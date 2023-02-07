@@ -1,4 +1,4 @@
-import { RadioButton as RadioProps } from '../../../types/Radio';
+import { RadioProps } from './Radio.type';
 import style from './Radio.module.scss';
 
 const Radio = ({ data, name, checked, onChange, classMod }: RadioProps): JSX.Element => {

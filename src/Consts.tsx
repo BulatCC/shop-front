@@ -12,3 +12,8 @@ export const SortType = {
     LowToHigh: 'Low to high',
     HighToLow: 'High to low'
 };
+
+export const ClothsGender = {
+    Woman: 'Woman',
+    Man: 'Man'
+};

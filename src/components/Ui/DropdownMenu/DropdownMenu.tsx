@@ -4,11 +4,17 @@ import style from './DropdownMenu.module.scss';
 import { UseOpenMenu } from '../../../hooks/UseOpenMenu';
 import arrowDownAccordion from '../../../assets/img/svg/arrowDownAccordion.svg';
 
+const screenWidth = document.documentElement.clientWidth;
+
 const DropdownMenu = ({ title, children, classMod }: DropdownMenuProps): JSX.Element => {
     const dropdownRef = useRef<HTMLDivElement | null>(null);
     const [dropdownActive, setDropdownActive] = useState<boolean>(false);
     const handleDropdownShow = (evt: MouseEvent<HTMLButtonElement>): void => {
         evt.stopPropagation();
+        setDropdownActive(!dropdownActive);
+    };
+
+    const handleCloseButton = (): void => {
         setDropdownActive(!dropdownActive);
     };
 
@@ -23,7 +29,12 @@ const DropdownMenu = ({ title, children, classMod }: DropdownMenuProps): JSX.Ele
             {dropdownActive && <div className={style['dropdown-menu_content']}>
                 <div className={style['dropdown-menu_header']}>
                     <h3 className={style['dropdown-menu_title']}>{title}</h3>
-                    <button className={style['dropdown-menu_button']} type="button">Close</button>
+                    {screenWidth < 768 && <button
+                        className={style['dropdown-menu_button']}
+                        type="button"
+                        onClick={handleCloseButton}
+                    >Close</button>
+                    }
                 </div>
                 {children}
             </div>}

@@ -1,39 +1,64 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, MouseEvent } from 'react';
 import { HeadBlock } from '../../components/Ui/HeadBlock/HeadBlock';
 import { BreadCrumbs } from '../../components/Common/BreadCrumbs/BreadCrumbs';
-import { FilterContainer } from '../../components/Ui/FilterContainer/FilterContainer';
 import { SortButtons } from '../../components/Common/SortButtons/SortButtons';
+import { FilterCatalog } from '../../components/Ui/FilterCatalog/FilterCatalog';
+import { ButtonsChoose } from '../../components/Common/ButtonsChoose/ButtonsChoose';
 import { ProductList } from '../../components/Ui/ProductList/ProductList';
 import { Pagination } from '../../components/Common/Pagination/Pagination';
 import { mockCrumbsData } from '../../services/mocks';
 import style from './Catalog.module.scss';
-import { SortType } from '../../Consts';
+import { SortType, ClothsGender } from '../../Consts';
 import { API } from '../../services/api';
 import { ProductCard } from '../../types/ProductCard';
 
 const screenWidth = document.documentElement.clientWidth;
-const sortData = [
+const sortByData = [
     {
-        name: SortType.Popular,
-        selected: true
+        id: '1',
+        value: SortType.Popular
     },
     {
-        name: SortType.HighToLow,
-        selected: false
+        id: '2',
+        value: SortType.HighToLow
     },
     {
-        name: SortType.LowToHigh,
-        selected: false
+        id: '3',
+        value: SortType.LowToHigh
+    }
+];
+
+const genderData = [
+    {
+        id: '1',
+        value: ClothsGender.Woman
+    },
+    {
+        id: '2',
+        value: ClothsGender.Man
     }
 ];
 
 const Catalog = (): JSX.Element => {
     const [catalogData, setCatalogData] = useState<ProductCard[]>();
+    const [sortData, setSortData] = useState({
+        sortBy: SortType.Popular,
+        gender: ClothsGender.Woman
+    });
+
     useEffect(() => {
         API.getCatalogData()
             .then(data => setCatalogData(data as ProductCard[]))
             .catch(error => console.log(error));
     }, []);
+
+    const handleChange = (evt: MouseEvent<HTMLButtonElement>): void => {
+        const { value, name } = evt.target as HTMLButtonElement;
+        setSortData({
+            ...sortData,
+            [name]: value
+        });
+    };
 
     // типа ajax, надо допиливать
     // const clickHandler = () => {
@@ -48,8 +73,24 @@ const Catalog = (): JSX.Element => {
             </div>
             <HeadBlock />
             <div className="container">
-                <FilterContainer classMod={style['catalog_filter-container']} />
-                <SortButtons data={sortData} classMod={style['catalog_sort-buttons']} />
+                <div className={style['catalog_filter-container']}>
+                    <div className={style['catalog_sort-container']}>
+                        <SortButtons
+                            data={sortByData}
+                            classMod={style['catalog_sort-buttons']}
+                            name='sortBy'
+                            onChange={handleChange}
+                            selected={sortData.sortBy}
+                        />
+                        <ButtonsChoose
+                            data={genderData}
+                            classMod={style['filter-container_buttons-choose']}
+                            name='gender'
+                            onChange={handleChange}
+                            selected={sortData.gender} />
+                    </div>
+                    <FilterCatalog classMod={style['catalog_dropdown-menu']} />
+                </div>
                 <section className="content">
                     <ProductList products={catalogData} skeletonNumber={9} classMod={style['catalog_product-list']} isCatalog />
                 </section>
